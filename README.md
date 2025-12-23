@@ -10,7 +10,7 @@ open-source-project with an STM32C011, mpu6050 and 3d-printed case. Switches Lig
 - Automatic On when movement detected, Off after standing still and timeout
 - STM32-based (STM32CubeMX IOC included)
 - 3D-printed case
-- Low sysclk for low power consumption: ~1mA idle current (mcu + mpu)
+- Low sysclk for low power consumption: ~1mA idle current (mcu + mpu6050)
 
 
 ## Overview
@@ -18,7 +18,7 @@ open-source-project with an STM32C011, mpu6050 and 3d-printed case. Switches Lig
 - [Technical Stack](#technical-stack)
 - [Quickstart](#quickstart)
 - [BOM](#bom)
-- [Bauanleitung](#bauanleitung)
+- [Build Instruction](#build-instruction)
 - [Firmware Flashing](#firmware-flashing)
 - [License Overview](#license-overview)
 - [Known Problems](#known-problems)
@@ -35,17 +35,21 @@ open-source-project with an STM32C011, mpu6050 and 3d-printed case. Switches Lig
 | Firmware | STM, MIT-licensed |
 
 ## BOM
-1. STM32C011 mcu (reichelt: STM32C011J6M6)
-2. mpu6050 (reichelt: DEBO HMC5883L 2)
-3. step-down converter (reichelt: LMO78_03-1.0)
-4. Adapterboard SO8 (reichelt: RE 899)
-5. BC547, npn bjt
-6. 1k THT base resistor
-7. M3 countersunk screws (reichelt: SKS M3X20-50)
-8. cable tie (reichelt: SHVP BS18-10002)
-9. for flashing: ST-link V3 or eval board (like NUCLEO-F746ZG)
-10. lipo battery, case works with 3S battery from an RC-Car (102mm x 34mm x 23mm)
-11. front and rear LED light (e.g. battery powered light from a supermarket/hardware store)
+| Component | Reichelt No. | 
+| :-- | :-- |
+| STM32C011 mcu | STM32C011J6M6 |
+| mpu6050 | DEBO HMC5883L 2 |
+| step-down converter | LMO78_03-1.0 |
+| Adapterboard SO8 | RE 899 |
+| BC547, npn bjt | ... |
+| 1k THT base resistor | ... |
+| M3 countersunk screws | SKS M3X20-50 |
+| M3 hot melt insert thread | ... |
+| cable tie | SHVP BS18-10002 |
+
+- for flashing: ST-link V3 or eval board (like NUCLEO-F746ZG)
+- lipo battery, case works with 3S battery from an RC-Car (102mm x 34mm x 23mm)
+- front and rear LED light (e.g. battery powered light from a supermarket/hardware store)
 
 ## Quickstart
 

@@ -53,7 +53,7 @@ open-source-project with an STM32C011, mpu6050 and 3d-printed case. Switches Lig
 
 ## Quickstart
 
-1. **Build Hardware**: populate PCB, print STLs (0.2mm Layer, 20% Infill)
+1. **Build Hardware**: solder MCU on SO8-Adapterboard if needed, print STLs (0.2mm Layer, 20% Infill)
 2. **Flash firmware**: ST-link V3 or STM-eval board
 3. **Connect**: Connect to LiPo battery and front/rear light
 3. **Test**: move bicycle → Lampe ON, 1min still → OFF
@@ -79,28 +79,34 @@ use SO8 adapter pcb if needed
 
 ### 3. Cabling
 <img src="images/schematic.png">
-```
-LED-Light transistor → Pin 1 (PC14)
-MPU6050 SDA → Pin 5 (PA8)
-MPU6050 SCL → Pin 6 (PA12)  
-SWDIO → Pin 7 (for flashing)
-SWCLK → Pin 8 (for flashing)
-```
+
+| Name | SO8 pin no. | STM gpio name |
+| :-- | :-- | :-- |
+| LED-Light transistor | → Pin 1 | PC14 |
+| MPU6050 SDA | → Pin 5 | PA8 |
+| MPU6050 SCL | → Pin 6 | PA12 |
+| SWDIO (flashing) | → Pin 7 | |
+| SWCLK (flashing) | → Pin 8 | |
+
 
 ## Flashing Hardware
 e.g. ST-Link V2/3 or STM eval kit:
 - NUCLEO-F303RE (reichelt, not tested)
 - NUCLEO-F746ZG (tested)
 - NUCLEO-F446ZE (reichelt, not tested, but same base as F746ZG)
+
 on MB1137 based eval boards (F746ZG, F446ZE, etc.) connector (CN6) can be used to program MCUs.
 headers on CN4 needs to be removed to use external programming (not the mcu on the eval board).
 pinout of the CN6:
-- 1: Vdd feedback (connect to Pin 2, connect here also 3V3 from the eval board to power the external MCU, e.g. pin 7 from CN8)
-- 2: SWCLK (connect to Pin 8)
-- 3: GND (connect Pin 3)
-- 4: SWDIO (connect to Pin 7)
-- 5: NRST (not needed)
-- 6: SWO (not needed)
+
+| CN6 pin | connect to STM mcu | function |
+| :-- | :-- | :-- |
+| 1 | → Pin 2 | Vdd feedback (connect here also 3V3 from the eval board to power the external MCU, e.g. pin 7 from CN8) |
+| 2 | → Pin 8 | SWCLK |
+| 3 | → Pin 3 | GND |
+| 4 | → Pin 7 | SWDIO |
+| 5 | n.c. | NRST |
+| 6 | n.c. | SWO |
 
 ## Firmware Flashing
 
